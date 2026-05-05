@@ -1,0 +1,41 @@
+{
+  "id": 2,
+  "url": "https://www.allrecipes.com/recipe/22831/alfredo-sauce/",
+  "title": "Alfredo Sauce",
+  "cuisine": "Italian-American",
+  "prep_time": "5 mins",
+  "cook_time": "10 mins",
+  "total_time": "15 mins",
+  "servings": 4,
+  "difficulty": "easy",
+  "ingredients": [
+    { "quantity": "1/4", "unit": "cup", "item": "butter" },
+    { "quantity": "1", "unit": "cup", "item": "heavy cream" },
+    { "quantity": "1", "unit": "clove", "item": "garlic, crushed" },
+    { "quantity": "1 1/2", "unit": "cups", "item": "grated Parmesan cheese" },
+    { "quantity": "1/4", "unit": "cup", "item": "chopped fresh parsley" }
+  ],
+  "instructions": [
+    "Melt butter in a saucepan over medium heat.",
+    "Add cream and simmer gently.",
+    "Stir in garlic and Parmesan cheese until melted and smooth.",
+    "Add parsley and serve over pasta."
+  ],
+  "nutrition_estimate": {
+    "calories": 440,
+    "protein": "11g",
+    "carbs": "3g",
+    "fat": "43g"
+  },
+  "substitutions": [
+    "Replace heavy cream with half-and-half for a lighter sauce.",
+    "Use pecorino romano instead of Parmesan for a sharper flavor.",
+    "Use olive oil instead of some butter to reduce saturated fat."
+  ],
+  "shopping_list": {
+    "dairy": ["butter", "heavy cream", "Parmesan cheese"],
+    "produce": ["garlic", "fresh parsley"]
+  },
+  "related_recipes": ["Fettuccine Alfredo", "Garlic Bread", "Caesar Salad"],
+  "created_at": "2026-05-05T00:00:00"
+}

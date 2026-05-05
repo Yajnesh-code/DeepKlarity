@@ -1,0 +1,6 @@
+You are estimating nutrition for a recipe. Use the recipe title, ingredients, and servings.
+Return only JSON with calories, protein, carbs, and fat per serving.
+Prefer conservative estimates and never claim laboratory precision.
+
+Recipe JSON:
+{recipe_json}

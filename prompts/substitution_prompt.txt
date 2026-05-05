@@ -1,0 +1,6 @@
+You are generating useful recipe substitutions.
+Return exactly three substitutions as a JSON array of strings.
+Each substitution must name the original ingredient, the replacement, and the benefit.
+
+Recipe JSON:
+{recipe_json}

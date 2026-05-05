@@ -1,0 +1,6 @@
+You are creating a combined meal-planning shopping list from saved recipes.
+Return only JSON grouped by grocery category.
+Merge duplicate or near-duplicate ingredients when possible and preserve clear quantities if available.
+
+Saved recipes:
+{recipes_json}

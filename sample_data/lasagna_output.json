@@ -1,0 +1,43 @@
+{
+  "id": 3,
+  "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+  "title": "Basic Meat Lasagna",
+  "cuisine": "Italian-American",
+  "prep_time": "25 mins",
+  "cook_time": "1 hr",
+  "total_time": "1 hr 25 mins",
+  "servings": 8,
+  "difficulty": "medium",
+  "ingredients": [
+    { "quantity": "1", "unit": "lb", "item": "ground beef" },
+    { "quantity": "1", "unit": "jar", "item": "spaghetti sauce" },
+    { "quantity": "12", "unit": "pieces", "item": "lasagna noodles" },
+    { "quantity": "16", "unit": "oz", "item": "ricotta cheese" },
+    { "quantity": "2", "unit": "cups", "item": "shredded mozzarella cheese" }
+  ],
+  "instructions": [
+    "Brown the ground beef and drain excess fat.",
+    "Stir in sauce and simmer briefly.",
+    "Layer sauce, noodles, ricotta, and mozzarella in a baking dish.",
+    "Repeat layers and bake until bubbling and cooked through.",
+    "Rest before slicing and serving."
+  ],
+  "nutrition_estimate": {
+    "calories": 520,
+    "protein": "30g",
+    "carbs": "38g",
+    "fat": "28g"
+  },
+  "substitutions": [
+    "Replace ground beef with lentils for a vegetarian version.",
+    "Use cottage cheese instead of ricotta for a lighter filling.",
+    "Use whole wheat noodles for more fiber."
+  ],
+  "shopping_list": {
+    "meat": ["ground beef"],
+    "pantry": ["spaghetti sauce", "lasagna noodles"],
+    "dairy": ["ricotta cheese", "mozzarella cheese"]
+  },
+  "related_recipes": ["Garlic Bread", "Italian Chopped Salad", "Minestrone Soup"],
+  "created_at": "2026-05-05T00:00:00"
+}
