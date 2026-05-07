@@ -9,7 +9,7 @@ const pageParams = new URLSearchParams(window.location.search);
 
 function App() {
   const [activeTab, setActiveTab] = useState(pageParams.get("tab") === "history" ? "history" : "extract");
-  const [url, setUrl] = useState("https://www.allrecipes.com/recipe/23891/grilled-cheese-sandwich/");
+  const [url, setUrl] = useState("");
   const [recipe, setRecipe] = useState(null);
   const [history, setHistory] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
