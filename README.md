@@ -79,6 +79,23 @@ npm run dev
 
 Open `http://127.0.0.1:5173`.
 
+## Deployment
+
+Recommended deployment for the assignment:
+
+1. Deploy the backend on Render using `render.yaml`.
+2. Add backend environment variables on Render:
+   - `GROQ_API_KEY`
+   - `GROQ_MODEL=llama-3.3-70b-versatile`
+   - `FRONTEND_ORIGINS=https://your-frontend-domain.vercel.app`
+3. Copy the Render backend URL, for example `https://deepklarity-backend.onrender.com`.
+4. Deploy the `frontend/` folder on Vercel.
+5. Add this Vercel environment variable:
+   - `VITE_API_BASE=https://your-render-backend-url`
+6. Redeploy frontend after setting `VITE_API_BASE`.
+
+The GitHub repository should not include `.env`; use `.env.example` as the safe template.
+
 ## API Endpoints
 
 - `GET /health` - service health check.
