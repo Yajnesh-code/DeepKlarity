@@ -1,7 +1,8 @@
 :root {
   color: #1f2a2e;
-  background: #f7f5ef;
+  background: #f3f6f2;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
 }
 
 * {
@@ -10,6 +11,7 @@
 
 body {
   margin: 0;
+  min-width: 320px;
 }
 
 button,
@@ -26,6 +28,13 @@ button {
   font-weight: 700;
   min-height: 44px;
   padding: 0 18px;
+  transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+button:hover:not(:disabled) {
+  background: #105447;
+  box-shadow: 0 8px 18px rgba(23, 107, 91, 0.18);
+  transform: translateY(-1px);
 }
 
 button:disabled {
@@ -35,16 +44,21 @@ button:disabled {
 
 .app-shell {
   margin: 0 auto;
-  max-width: 1180px;
-  padding: 32px 20px 56px;
+  max-width: 1200px;
+  padding: 34px 20px 56px;
 }
 
 .topbar {
   align-items: end;
+  background: #ffffff;
+  border: 1px solid #dde6dd;
+  border-radius: 8px;
+  box-shadow: 0 18px 48px rgba(31, 42, 46, 0.08);
   display: flex;
   gap: 20px;
   justify-content: space-between;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
+  padding: 22px;
 }
 
 .eyebrow {
@@ -64,15 +78,23 @@ p {
 }
 
 h1 {
-  font-size: clamp(2rem, 3vw, 3rem);
-  margin-bottom: 0;
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #5f6f6b;
+  margin: 0;
+  max-width: 680px;
 }
 
 .tabs {
-  background: #e5eadf;
+  background: #eef3ed;
   border: 1px solid #ccd7cd;
   border-radius: 8px;
   display: flex;
+  flex-shrink: 0;
   padding: 4px;
 }
 
@@ -85,6 +107,7 @@ h1 {
 .tabs button.active {
   background: #176b5b;
   color: #fff;
+  box-shadow: 0 6px 14px rgba(23, 107, 91, 0.18);
 }
 
 .panel {
@@ -92,13 +115,17 @@ h1 {
   border: 1px solid #e1e5dc;
   border-radius: 8px;
   box-shadow: 0 18px 48px rgba(31, 42, 46, 0.08);
-  padding: 22px;
+  padding: 24px;
 }
 
 .extract-form {
-  border-bottom: 1px solid #e5e8e1;
+  background: #fbfcfa;
+  border: 1px solid #e5e8e1;
+  border-radius: 8px;
   margin-bottom: 24px;
-  padding-bottom: 22px;
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
 }
 
 .extract-form label {
@@ -121,6 +148,28 @@ input[type="url"] {
   width: 100%;
 }
 
+input[type="url"]:focus {
+  border-color: #176b5b;
+  box-shadow: 0 0 0 3px rgba(23, 107, 91, 0.14);
+  outline: 0;
+}
+
+.progress-line {
+  animation: loadbar 1.2s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, #176b5b, transparent);
+  bottom: 0;
+  height: 3px;
+  left: -45%;
+  position: absolute;
+  width: 45%;
+}
+
+@keyframes loadbar {
+  to {
+    left: 100%;
+  }
+}
+
 .alert {
   background: #ffe9e0;
   border: 1px solid #efb19c;
@@ -132,7 +181,8 @@ input[type="url"] {
 
 .empty-state {
   align-items: center;
-  border: 1px dashed #bfc9c5;
+  background: #fbfcfa;
+  border: 1px dashed #b9c9c1;
   border-radius: 8px;
   display: grid;
   min-height: 220px;
@@ -142,7 +192,8 @@ input[type="url"] {
 
 .recipe-hero {
   align-items: start;
-  background: #eef4ed;
+  background: linear-gradient(135deg, #eef4ed 0%, #fbf7ec 100%);
+  border: 1px solid #dce6da;
   border-radius: 8px;
   display: grid;
   gap: 22px;
@@ -172,6 +223,7 @@ input[type="url"] {
   border: 1px solid #dbe3da;
   border-radius: 6px;
   padding: 10px;
+  min-height: 70px;
 }
 
 .meta-item span {
@@ -196,16 +248,21 @@ input[type="url"] {
 .card {
   border: 1px solid #e1e5dc;
   border-radius: 8px;
+  background: #fff;
   padding: 18px;
+  min-width: 0;
 }
 
 .card h2 {
+  border-bottom: 1px solid #edf0eb;
   font-size: 1.05rem;
   margin-bottom: 12px;
+  padding-bottom: 10px;
 }
 
 .card li {
   margin-bottom: 8px;
+  padding-right: 6px;
 }
 
 .nutrition {
@@ -215,7 +272,8 @@ input[type="url"] {
 }
 
 .nutrition span {
-  background: #f6f7f3;
+  background: #f6f8f4;
+  border: 1px solid #e4eadf;
   border-radius: 6px;
   padding: 12px;
 }
@@ -251,12 +309,29 @@ input[type="url"] {
   justify-content: space-between;
 }
 
+.section-heading h2,
+.meal-planner h2 {
+  margin-bottom: 2px;
+}
+
+.section-heading p,
+.meal-planner p {
+  color: #66736f;
+  margin-bottom: 0;
+}
+
 .section-heading span {
+  background: #eef3ed;
+  border-radius: 999px;
   color: #687672;
   font-weight: 700;
+  padding: 6px 12px;
 }
 
 .table-wrap {
+  border: 1px solid #e4e8e2;
+  border-radius: 8px;
+  margin-top: 14px;
   overflow-x: auto;
 }
 
@@ -269,14 +344,23 @@ table {
 th,
 td {
   border-bottom: 1px solid #e4e8e2;
-  padding: 12px 10px;
+  padding: 14px 12px;
   text-align: left;
 }
 
 th {
+  background: #f6f8f4;
   color: #52625e;
   font-size: 0.8rem;
   text-transform: uppercase;
+}
+
+tbody tr:hover {
+  background: #fbfcfa;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
 }
 
 .title-cell {
@@ -289,13 +373,19 @@ th {
 }
 
 .pill {
-  background: #e5eadf;
+  background: #e8f2ec;
   border-radius: 999px;
-  color: #40504c;
+  color: #176b5b;
   display: inline-block;
   font-size: 0.82rem;
   font-weight: 800;
   padding: 4px 10px;
+}
+
+.plan-check {
+  accent-color: #176b5b;
+  height: 18px;
+  width: 18px;
 }
 
 .ghost {
@@ -305,14 +395,23 @@ th {
 }
 
 .meal-planner {
+  background: #fbfcfa;
+  border: 1px solid #e4e8e2;
   border-top: 1px solid #e5e8e1;
+  border-radius: 8px;
   margin-top: 22px;
-  padding-top: 20px;
+  padding: 18px;
+  flex-wrap: wrap;
+}
+
+.meal-planner .shopping-grid {
+  flex-basis: 100%;
+  margin-top: 4px;
 }
 
 .modal-backdrop {
   align-items: center;
-  background: rgba(31, 42, 46, 0.5);
+  background: rgba(31, 42, 46, 0.58);
   display: flex;
   inset: 0;
   justify-content: center;
@@ -324,6 +423,7 @@ th {
 .modal {
   background: #fff;
   border-radius: 8px;
+  box-shadow: 0 28px 80px rgba(31, 42, 46, 0.24);
   max-height: 92vh;
   max-width: 980px;
   overflow: auto;
@@ -332,11 +432,13 @@ th {
 }
 
 .modal-head {
+  border-bottom: 1px solid #e6ebe4;
   align-items: center;
   display: flex;
   gap: 16px;
   justify-content: space-between;
   margin-bottom: 16px;
+  padding-bottom: 14px;
 }
 
 .icon-button {
@@ -344,11 +446,13 @@ th {
   background: #edf2ef;
   color: #1f2a2e;
   display: inline-flex;
-  font-size: 1.2rem;
+  font-size: 0.86rem;
+  font-weight: 800;
   justify-content: center;
   min-height: 38px;
   padding: 0;
-  width: 38px;
+  width: auto;
+  padding: 0 14px;
 }
 
 .compact .recipe-hero {

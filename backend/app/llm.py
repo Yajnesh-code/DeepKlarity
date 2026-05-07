@@ -148,10 +148,14 @@ def _normalize_recipe(recipe: dict[str, Any], scraped: dict[str, Any]) -> dict[s
         elif isinstance(ingredient, dict):
             item = str(ingredient.get("item") or ingredient.get("name") or "").strip()
             if item:
+                quantity, unit = _clean_ingredient_parts(
+                    ingredient.get("quantity"),
+                    ingredient.get("unit"),
+                )
                 normalized_ingredients.append(
                     {
-                        "quantity": str(ingredient.get("quantity") or "").strip(),
-                        "unit": str(ingredient.get("unit") or "").strip(),
+                        "quantity": quantity,
+                        "unit": unit,
                         "item": item,
                     }
                 )
@@ -204,6 +208,14 @@ def _macro(value: Any) -> str:
     return text
 
 
+def _clean_ingredient_parts(quantity: Any, unit: Any) -> tuple[str, str]:
+    quantity_text = str(quantity or "").strip()
+    unit_text = str(unit or "").strip()
+    if unit_text and quantity_text.lower().endswith(f" {unit_text.lower()}"):
+        quantity_text = quantity_text[: -len(unit_text)].strip()
+    return quantity_text, unit_text
+
+
 def _normalize_shopping_list(value: Any) -> dict[str, list[str]]:
     if not isinstance(value, dict):
         return {}
@@ -211,7 +223,9 @@ def _normalize_shopping_list(value: Any) -> dict[str, list[str]]:
     for category, items in value.items():
         if isinstance(items, str):
             items = [items]
-        normalized[str(category).lower()] = [str(item) for item in items or []]
+        cleaned_items = [str(item).strip() for item in items or [] if str(item).strip()]
+        if cleaned_items:
+            normalized[str(category).lower()] = cleaned_items
     return normalized
 
 

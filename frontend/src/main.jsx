@@ -119,6 +119,7 @@ function App() {
         <div>
           <p className="eyebrow">Recipe Blog URL to Structured Data</p>
           <h1>Recipe Extractor & Meal Planner</h1>
+          <p className="subtitle">Scrape recipe pages, generate structured insights, and save every result to PostgreSQL.</p>
         </div>
         <div className="tabs" role="tablist" aria-label="Recipe workflow tabs">
           <button className={activeTab === "extract" ? "active" : ""} onClick={() => setActiveTab("extract")}>
@@ -147,6 +148,7 @@ function App() {
               />
               <button type="submit" disabled={loading}>{loading ? "Extracting" : "Extract Recipe"}</button>
             </div>
+            {loading && <div className="progress-line" aria-label="Extraction in progress" />}
           </form>
           {recipe ? <RecipeDetails recipe={recipe} /> : <EmptyState />}
         </section>
@@ -203,7 +205,10 @@ function HistoryTable({ history, selectedIds, onToggle, onDetails }) {
   return (
     <div className="history-block">
       <div className="section-heading">
-        <h2>Saved Recipes</h2>
+        <div>
+          <h2>Saved Recipes</h2>
+          <p>Previously extracted URLs stored in the database.</p>
+        </div>
         <span>{history.length} total</span>
       </div>
       <div className="table-wrap">
@@ -223,6 +228,7 @@ function HistoryTable({ history, selectedIds, onToggle, onDetails }) {
               <tr key={item.id}>
                 <td>
                   <input
+                    className="plan-check"
                     type="checkbox"
                     checked={selectedIds.includes(item.id)}
                     onChange={() => onToggle(item.id)}
@@ -277,7 +283,7 @@ function DetailsModal({ recipe, onClose }) {
       <div className="modal">
         <div className="modal-head">
           <h2>{recipe.title}</h2>
-          <button className="icon-button" onClick={onClose} aria-label="Close details">x</button>
+          <button className="icon-button" onClick={onClose} aria-label="Close details">Close</button>
         </div>
         <RecipeDetails recipe={recipe} compact />
       </div>
