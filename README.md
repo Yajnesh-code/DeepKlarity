@@ -81,18 +81,24 @@ Open `http://127.0.0.1:5173`.
 
 ## Deployment
 
-Recommended deployment for the assignment:
+Recommended free deployment for the assignment:
 
-1. Deploy the backend on Render using `render.yaml`.
-2. Add backend environment variables on Render:
+- Frontend: Vercel
+- Backend: Vercel FastAPI project
+- Database: Neon PostgreSQL
+
+1. Create a free PostgreSQL database on Neon and copy its connection string.
+2. Deploy the `backend/` folder as a Vercel project.
+3. Add backend environment variables on Vercel:
+   - `DATABASE_URL=postgresql://...neon.tech/...?...sslmode=require`
    - `GROQ_API_KEY`
    - `GROQ_MODEL=llama-3.3-70b-versatile`
    - `FRONTEND_ORIGINS=https://your-frontend-domain.vercel.app`
-3. Copy the Render backend URL, for example `https://deepklarity-backend.onrender.com`.
-4. Deploy the `frontend/` folder on Vercel.
-5. Add this Vercel environment variable:
-   - `VITE_API_BASE=https://your-render-backend-url`
-6. Redeploy frontend after setting `VITE_API_BASE`.
+4. Copy the deployed backend URL, for example `https://deepklarity-backend.vercel.app`.
+5. Deploy the `frontend/` folder as a second Vercel project.
+6. Add this frontend environment variable:
+   - `VITE_API_BASE=https://your-backend-domain.vercel.app`
+7. Redeploy frontend after setting `VITE_API_BASE`.
 
 The GitHub repository should not include `.env`; use `.env.example` as the safe template.
 
