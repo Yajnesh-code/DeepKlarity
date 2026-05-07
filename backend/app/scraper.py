@@ -26,7 +26,14 @@ class ScrapeError(RuntimeError):
 def scrape_recipe_page(url: str) -> dict[str, Any]:
     try:
         response = requests.get(url, headers=HEADERS, timeout=15)
+        if response.status_code == 403:
+            raise ScrapeError(
+                "This recipe website blocked the scraper request. "
+                "Try another recipe URL or use a site that allows server-side scraping."
+            )
         response.raise_for_status()
+    except ScrapeError:
+        raise
     except requests.RequestException as exc:
         raise ScrapeError(f"Could not fetch URL: {exc}") from exc
 
