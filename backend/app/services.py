@@ -6,6 +6,10 @@ from .scraper import scrape_recipe_page
 
 
 def extract_and_store_recipe(db: Session, url: str) -> models.Recipe:
+    existing = db.query(models.Recipe).filter(models.Recipe.url == url).first()
+    if existing:
+        return existing
+
     scraped = scrape_recipe_page(url)
     generated = generate_recipe_data(scraped)
     payload = schemas.RecipeBase(url=url, **generated)
