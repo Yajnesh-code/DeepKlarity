@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000";
+const API_BASE = import.meta.env.VITE_API_BASE || (import.meta.env.DEV ? "http://127.0.0.1:8000" : "");
 const pageParams = new URLSearchParams(window.location.search);
 
 function App() {
@@ -29,6 +29,9 @@ function App() {
   }, []);
 
   async function request(path, options) {
+    if (!API_BASE) {
+      throw new Error("Missing VITE_API_BASE. Set it to your deployed backend URL in Vercel and redeploy the frontend.");
+    }
     const response = await fetch(`${API_BASE}${path}`, {
       headers: { "Content-Type": "application/json" },
       ...options,
